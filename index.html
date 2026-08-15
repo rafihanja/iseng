@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXCORE — Executive SaaS & Operations Ecosystem</title>
+  
+  <!-- Unique & Bespoke Typography: Space Grotesk, Outfit, Geist & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js CDN for Analytics Visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Bespoke Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Sticky Left Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Workspace Brand Switcher -->
+      <div class="brand-wrapper" id="brandSwitcher" title="Klik untuk beralih workspace">
+        <div class="brand-icon">
+          <img src="logo.png" alt="EXCORE Logo" class="brand-logo-img">
+        </div>
+        <div class="brand-info">
+          <div class="brand-name">EX<span class="brand-accent">CORE</span></div>
+          <div class="brand-workspace">Enterprise Matrix HQ ▾</div>
+        </div>
+        <div class="brand-status-dot" title="Telemetri EXCORE Online"></div>
+      </div>
+
+      <!-- Navigation Sections -->
+      <nav class="nav-container">
+        <div class="nav-group-label">OVERVIEW</div>
+        
+        <a class="nav-link active" href="#overview" data-page="overview">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+          </span>
+          <span class="nav-text">Executive Hub</span>
+          <span class="nav-pill active-dot"></span>
+        </a>
+
+        <a class="nav-link" href="#sales" data-page="sales">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </span>
+          <span class="nav-text">Sales & Revenue</span>
+          <span class="nav-badge success">+15.2%</span>
+        </a>
+
+        <a class="nav-link" href="#crm" data-page="crm">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </span>
+          <span class="nav-text">Customers & CRM</span>
+          <span class="nav-badge neutral">24.8k</span>
+        </a>
+
+        <div class="nav-group-label">OPERASI & KATALOG</div>
+
+        <a class="nav-link" href="#products" data-page="products">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>
+          </span>
+          <span class="nav-text">Product Catalog</span>
+        </a>
+
+        <a class="nav-link" href="#orders" data-page="orders">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+          </span>
+          <span class="nav-text">Live Orders</span>
+          <span class="nav-badge pulse">Live</span>
+        </a>
+
+        <a class="nav-link" href="#reports" data-page="reports">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg>
+          </span>
+          <span class="nav-text">Financial Audit</span>
+        </a>
+
+        <div class="nav-group-label">SISTEM</div>
+
+        <a class="nav-link" href="#settings" data-page="settings">
+          <span class="nav-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          </span>
+          <span class="nav-text">Settings & API</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Glassmorphic Topbar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-toggle-btn" id="menuBtn" aria-label="Toggle Navigation">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+          </button>
+          
+          <div class="search-command-bar">
+            <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+            <input id="globalSearch" type="search" placeholder="Search orders, SKU, customer..." autocomplete="off">
+            <kbd class="shortcut-pill">⌘K</kbd>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Quick Action Buttons -->
+          <button class="btn btn-secondary" id="exportBtn" title="Export transactions to CSV">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+            <span>Export CSV</span>
+          </button>
+
+          <button class="btn btn-primary" id="addTxBtn" title="Create a new transaction record">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="5" y2="19"></line><line x1="5" x2="19" y1="12" y2="12"></line></svg>
+            <span>New Transaction</span>
+          </button>
+
+          <div class="divider-v"></div>
+
+          <!-- Notification Bell with Dropdown Container -->
+          <div class="dropdown-wrapper">
+            <button class="icon-button notification-btn" id="notifBtn" aria-label="Notifications" title="Live Telemetry Notifications">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path></svg>
+              <span class="notification-indicator" id="notifBadge"></span>
+            </button>
+            <div class="dropdown-panel notif-panel" id="notifDropdown">
+              <div class="dropdown-header">
+                <div class="dropdown-title">Notifications</div>
+                <button class="dropdown-action-btn" id="clearNotifBtn">Mark all as read</button>
+              </div>
+              <div class="notif-list">
+                <div class="notif-item unread">
+                  <div class="notif-icon-circle green">💳</div>
+                  <div class="notif-content">
+                    <div class="notif-text"><strong>Rp 2.450.000</strong> received from <em>Budi Santoso</em></div>
+                    <div class="notif-time">2 mins ago</div>
+                  </div>
+                </div>
+                <div class="notif-item unread">
+                  <div class="notif-icon-circle amber">⚠️</div>
+                  <div class="notif-content">
+                    <div class="notif-text"><strong>Quantum Watch Ultra</strong> is running low (5 units left)</div>
+                    <div class="notif-time">15 mins ago</div>
+                  </div>
+                </div>
+                <div class="notif-item">
+                  <div class="notif-icon-circle blue">👥</div>
+                  <div class="notif-content">
+                    <div class="notif-text">New enterprise account registered: <em>Global Trade ID</em></div>
+                    <div class="notif-time">1 hour ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theme Toggle (Dark / Light) -->
+          <button class="icon-button theme-toggle-btn" id="themeBtn" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+            <svg class="sun-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+            <svg class="moon-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          </button>
+
+          <!-- Executive User Avatar with Dropdown -->
+          <div class="dropdown-wrapper">
+            <div class="user-profile-menu" id="userProfileBtn">
+              <div class="user-avatar">
+                <span>AM</span>
+                <span class="user-online-badge"></span>
+              </div>
+              <div class="user-meta">
+                <div class="user-name">Admin Media</div>
+                <div class="user-role">Super Executive ▾</div>
+              </div>
+            </div>
+            <div class="dropdown-panel profile-panel" id="profileDropdown">
+              <div class="profile-dropdown-header">
+                <strong>Admin Media</strong>
+                <small>admin@excore.enterprise.id</small>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a href="#settings" class="dropdown-link"><span class="icon">⚙️</span> Settings & Preferences</a>
+              <a href="#reports" class="dropdown-link"><span class="icon">📊</span> Financial Audits</a>
+              <a href="#crm" class="dropdown-link"><span class="icon">👥</span> Team Management</a>
+              <div class="dropdown-divider"></div>
+              <button class="dropdown-link logout" id="logoutBtn"><span class="icon">🚪</span> Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable Main Viewport Container -->
+      <div class="viewport-container">
+        <!-- Dynamic Header Banner -->
+        <section class="view-header">
+          <div>
+            <h1 class="view-title" id="heading">Executive Overview</h1>
+            <p class="view-subtitle" id="subheading">Live operational telemetry, automated transaction processing, and multi-channel performance.</p>
+          </div>
+          <div class="date-filter-group">
+            <div class="live-pulse-badge" id="telemetryStatusBtn" title="Telemetry Engine Active">
+              <span class="pulse-dot"></span>
+              <span>LIVE TELEMETRY</span>
+            </div>
+            <div class="segmented-control">
+              <button class="segmented-btn" data-range="today">Today</button>
+              <button class="segmented-btn" data-range="7d">7D</button>
+              <button class="segmented-btn active" data-range="30d">30D</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             1. EXECUTIVE OVERVIEW PAGE
+             ========================================================================== -->
+        <div id="overviewPage" class="page-view">
+          <!-- 4 Non-Generic Bespoke Metric Cards -->
+          <section class="kpi-grid">
+            <!-- Card 1: Gross Revenue -->
+            <div class="kpi-card" data-nav="sales" title="Click to view Sales & Revenue">
+              <div class="kpi-head">
+                <span class="kpi-label">Gross Revenue</span>
+                <div class="kpi-icon violet">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" x2="12" y1="2" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+              </div>
+              <div class="kpi-body">
+                <div class="kpi-value" id="kpiRevenueVal">Rp 428,50 M</div>
+                <div class="kpi-footer">
+                  <span class="delta-pill up">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                    +15.2%
+                  </span>
+                  <span class="kpi-comparison">vs last month</span>
+                </div>
+              </div>
+              <div class="kpi-sparkline">
+                <svg viewBox="0 0 120 28" fill="none" preserveAspectRatio="none">
+                  <path d="M0,24 Q20,18 40,22 T80,10 T120,4" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Card 2: Net Orders -->
+            <div class="kpi-card" data-nav="orders" title="Click to view Live Orders">
+              <div class="kpi-head">
+                <span class="kpi-label">Net Orders Volume</span>
+                <div class="kpi-icon indigo">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"></rect><line x1="2" x2="22" y1="10" y2="10"></line></svg>
+                </div>
+              </div>
+              <div class="kpi-body">
+                <div class="kpi-value-group">
+                  <div class="kpi-value" id="kpiOrdersVal">8,549</div>
+                  <span class="kpi-tag">Avg Rp 50.1k</span>
+                </div>
+                <div class="kpi-footer">
+                  <span class="delta-pill up">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                    +8.4%
+                  </span>
+                  <span class="kpi-comparison">vs last month</span>
+                </div>
+              </div>
+              <div class="kpi-sparkline">
+                <svg viewBox="0 0 120 28" fill="none" preserveAspectRatio="none">
+                  <path d="M0,22 Q30,26 60,14 T120,6" stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Card 3: Active Customers -->
+            <div class="kpi-card" data-nav="crm" title="Click to view Customers CRM">
+              <div class="kpi-head">
+                <span class="kpi-label">Active Customers (CRM)</span>
+                <div class="kpi-icon emerald">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                </div>
+              </div>
+              <div class="kpi-body">
+                <div class="kpi-value" id="kpiUsersVal">24,892</div>
+                <div class="kpi-footer">
+                  <span class="delta-pill up">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                    +12.8%
+                  </span>
+                  <span class="kpi-comparison">88.4% retention</span>
+                </div>
+              </div>
+              <div class="kpi-sparkline">
+                <svg viewBox="0 0 120 28" fill="none" preserveAspectRatio="none">
+                  <path d="M0,25 Q35,12 70,16 T120,4" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Card 4: Fulfillment Rate -->
+            <div class="kpi-card" data-nav="products" title="Click to view Product Inventory">
+              <div class="kpi-head">
+                <span class="kpi-label">Fulfillment & SLA</span>
+                <div class="kpi-icon amber">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+              </div>
+              <div class="kpi-body">
+                <div class="kpi-value">98.6%</div>
+                <div class="kpi-footer">
+                  <span class="delta-pill up">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                    +1.4%
+                  </span>
+                  <span class="kpi-comparison">0.02s latency</span>
+                </div>
+              </div>
+              <div class="kpi-sparkline">
+                <svg viewBox="0 0 120 28" fill="none" preserveAspectRatio="none">
+                  <path d="M0,18 Q40,8 80,10 T120,3" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+          </section>
+
+          <!-- Core Analytics 2-Column Section -->
+          <section class="analytics-row">
+            <!-- Left Chart Panel (65%) -->
+            <div class="card chart-card">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title">Financial Velocity & Target Trajectory</h2>
+                  <p class="card-desc">Dual-metric revenue generation vs AI target forecasting in Millions IDR.</p>
+                </div>
+                <div class="chart-controls">
+                  <div class="chart-legend">
+                    <span class="legend-dot actual"></span><span>Actual</span>
+                    <span class="legend-dot target"></span><span>Target</span>
+                  </div>
+                  <select id="chartPeriod" class="select-pill" aria-label="Select Revenue Timeframe">
+                    <option value="6 Bulan">6 Months (H1)</option>
+                    <option value="12 Bulan">12 Months (Full FY)</option>
+                    <option value="30 Hari">30 Days (Rolling)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="revenueChart"></canvas>
+              </div>
+            </div>
+
+            <!-- Right Top Selling Products Panel (35%) -->
+            <div class="card products-card">
+              <div class="card-head">
+                <div>
+                  <h2 class="card-title">High-Velocity Catalog</h2>
+                  <p class="card-desc">Top product sales & inventory health.</p>
+                </div>
+                <a href="#products" class="link-action">All Catalog →</a>
+              </div>
+              
+              <div class="catalog-list" id="overviewCatalogList">
+                <!-- Product 1 -->
+                <div class="catalog-item" data-product="PulseFlow Headset Pro">
+                  <div class="catalog-thumb thumb-indigo">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                  </div>
+                  <div class="catalog-info">
+                    <div class="catalog-name">PulseFlow Headset Pro</div>
+                    <div class="catalog-meta">Audio • 142 units sold</div>
+                    <div class="inventory-bar"><div class="inventory-fill" style="width: 82%;"></div></div>
+                  </div>
+                  <div class="catalog-val">
+                    <div class="val-amount">Rp 48,2 M</div>
+                    <div class="val-stock text-success">In Stock (18)</div>
+                  </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="catalog-item" data-product="Quantum Watch Ultra">
+                  <div class="catalog-thumb thumb-emerald">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="7"></circle><polyline points="12 9 12 12 13.5 13.5"></polyline><path d="M16.51 17.35l-.35 3.83a2 2 0 0 1-2 1.82H9.83a2 2 0 0 1-2-1.82l-.35-3.83m.01-10.7l.35-3.83A2 2 0 0 1 9.83 1h4.35a2 2 0 0 1 2 1.82l.35 3.83"></path></svg>
+                  </div>
+                  <div class="catalog-info">
+                    <div class="catalog-name">Quantum Watch Ultra</div>
+                    <div class="catalog-meta">Wearable • 98 units sold</div>
+                    <div class="inventory-bar"><div class="inventory-fill" style="width: 45%;"></div></div>
+                  </div>
+                  <div class="catalog-val">
+                    <div class="val-amount">Rp 36,8 M</div>
+                    <div class="val-stock text-warning">Low Stock (5)</div>
+                  </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="catalog-item" data-product="CyberKey Mech Matrix">
+                  <div class="catalog-thumb thumb-amber">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="12" x="2" y="6" rx="2"></rect><line x1="6" x2="6" y1="10" y2="10"></line><line x1="10" x2="10" y1="10" y2="10"></line><line x1="14" x2="14" y1="10" y2="10"></line><line x1="18" x2="18" y1="10" y2="10"></line><line x1="8" x2="16" y1="14" y2="14"></line></svg>
+                  </div>
+                  <div class="catalog-info">
+                    <div class="catalog-name">CyberKey Mech Matrix</div>
+                    <div class="catalog-meta">Peripherals • 76 units sold</div>
+                    <div class="inventory-bar"><div class="inventory-fill" style="width: 90%;"></div></div>
+                  </div>
+                  <div class="catalog-val">
+                    <div class="val-amount">Rp 29,4 M</div>
+                    <div class="val-stock text-success">In Stock (42)</div>
+                  </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="catalog-item" data-product="AeroGlide Master Mouse">
+                  <div class="catalog-thumb thumb-violet">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="7"></rect><line x1="12" x2="12" y1="6" y2="10"></line></svg>
+                  </div>
+                  <div class="catalog-info">
+                    <div class="catalog-name">AeroGlide Master Mouse</div>
+                    <div class="catalog-meta">Hardware • 65 units sold</div>
+                    <div class="inventory-bar"><div class="inventory-fill" style="width: 60%;"></div></div>
+                  </div>
+                  <div class="catalog-val">
+                    <div class="val-amount">Rp 21,7 M</div>
+                    <div class="val-stock text-success">In Stock (24)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Live Recent Transactions Table -->
+          <section class="card table-card">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">Live Transaction Stream</h2>
+                <p class="card-desc">Real-time ledger entries from Indonesian and global payment gateways.</p>
+              </div>
+              <div class="table-actions-top">
+                <a href="#orders" class="link-action">Inspect All Ledger Entries →</a>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order Reference</th>
+                    <th>Customer Identity</th>
+                    <th>Timestamp</th>
+                    <th>Amount (IDR)</th>
+                    <th>Gateway Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="orderTable">
+                  <tr data-ref="#ORD-82914">
+                    <td><span class="ref-code">#ORD-82914</span></td>
+                    <td>
+                      <div class="customer-cell">
+                        <div class="c-avatar av-blue">BS</div>
+                        <div class="c-meta">
+                          <span class="c-name">Budi Santoso</span>
+                          <span class="c-email">budi.santoso@enterprise.co.id</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="timestamp-tag">Today, 14:32 WIB</span></td>
+                    <td class="amount-cell">Rp 2.450.000</td>
+                    <td><span class="chip-status chip-completed">Settled</span></td>
+                    <td class="text-right">
+                      <button class="row-action-btn action-menu-btn" data-order="#ORD-82914" title="Options">•••</button>
+                    </td>
+                  </tr>
+
+                  <tr data-ref="#ORD-82913">
+                    <td><span class="ref-code">#ORD-82913</span></td>
+                    <td>
+                      <div class="customer-cell">
+                        <div class="c-avatar av-emerald">AP</div>
+                        <div class="c-meta">
+                          <span class="c-name">Andi Pratama</span>
+                          <span class="c-email">andi.p@fintechcorp.id</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="timestamp-tag">Today, 11:15 WIB</span></td>
+                    <td class="amount-cell">Rp 1.875.000</td>
+                    <td><span class="chip-status chip-processing">Processing</span></td>
+                    <td class="text-right">
+                      <button class="row-action-btn action-menu-btn" data-order="#ORD-82913" title="Options">•••</button>
+                    </td>
+                  </tr>
+
+                  <tr data-ref="#ORD-82912">
+                    <td><span class="ref-code">#ORD-82912</span></td>
+                    <td>
+                      <div class="customer-cell">
+                        <div class="c-avatar av-purple">SR</div>
+                        <div class="c-meta">
+                          <span class="c-name">Siti Rahma</span>
+                          <span class="c-email">siti.rahma@cloudstudio.com</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="timestamp-tag">Yesterday, 19:40 WIB</span></td>
+                    <td class="amount-cell">Rp 3.120.000</td>
+                    <td><span class="chip-status chip-completed">Settled</span></td>
+                    <td class="text-right">
+                      <button class="row-action-btn action-menu-btn" data-order="#ORD-82912" title="Options">•••</button>
+                    </td>
+                  </tr>
+
+                  <tr data-ref="#ORD-82911">
+                    <td><span class="ref-code">#ORD-82911</span></td>
+                    <td>
+                      <div class="customer-cell">
+                        <div class="c-avatar av-amber">DW</div>
+                        <div class="c-meta">
+                          <span class="c-name">Dewi Wulandari</span>
+                          <span class="c-email">dewi.wulan@globaltrade.id</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="timestamp-tag">Yesterday, 16:05 WIB</span></td>
+                    <td class="amount-cell">Rp 950.000</td>
+                    <td><span class="chip-status chip-failed">Refunded</span></td>
+                    <td class="text-right">
+                      <button class="row-action-btn action-menu-btn" data-order="#ORD-82911" title="Options">•••</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+
+        <!-- ==========================================================================
+             2. SALES & REVENUE PAGE
+             ========================================================================== -->
+        <section class="page-view hidden" id="salesPage">
+          <div class="card mb-4">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">Sales Channel Breakdown & Pipeline</h2>
+                <p class="card-desc">Multi-channel revenue split across Indonesian payment methods and direct API gateways.</p>
+              </div>
+              <button class="btn btn-primary" id="newPipelineBtn">+ Create Sales Pipeline</button>
+            </div>
+            
+            <div class="channel-grid">
+              <div class="channel-card">
+                <div class="channel-title">QRIS & Instant Virtual Account</div>
+                <div class="channel-amount">Rp 218,4 M</div>
+                <div class="channel-share">51.0% of total revenue</div>
+                <div class="inventory-bar mt-2"><div class="inventory-fill" style="width: 51%;"></div></div>
+              </div>
+              <div class="channel-card">
+                <div class="channel-title">Direct Credit Card (Stripe)</div>
+                <div class="channel-amount">Rp 124,2 M</div>
+                <div class="channel-share">29.0% of total revenue</div>
+                <div class="inventory-bar mt-2"><div class="inventory-fill" style="width: 29%; background: #6366f1;"></div></div>
+              </div>
+              <div class="channel-card">
+                <div class="channel-title">Corporate Wire / Invoicing</div>
+                <div class="channel-amount">Rp 85,9 M</div>
+                <div class="channel-share">20.0% of total revenue</div>
+                <div class="inventory-bar mt-2"><div class="inventory-fill" style="width: 20%; background: #f59e0b;"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">Recurring Subscriptions (MRR / ARR)</h2>
+                <p class="card-desc">Active corporate licenses and renewal pipeline.</p>
+              </div>
+              <button class="btn btn-secondary" id="exportSalesBtn">Download Reconciliation Report</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Organization</th>
+                    <th>Plan Tier</th>
+                    <th>Seats</th>
+                    <th>Monthly MRR</th>
+                    <th>Next Renewal</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>PT Telkom Finansial</strong></td>
+                    <td><span class="tier-badge">ENTERPRISE</span></td>
+                    <td>250 Seats</td>
+                    <td><strong>Rp 45.000.000</strong></td>
+                    <td>01 Sep 2026</td>
+                    <td><span class="chip-status chip-completed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bank Digital Nusantara</strong></td>
+                    <td><span class="tier-badge">ENTERPRISE</span></td>
+                    <td>500 Seats</td>
+                    <td><strong>Rp 85.000.000</strong></td>
+                    <td>15 Sep 2026</td>
+                    <td><span class="chip-status chip-completed">Active</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Cloud Studio Tech</strong></td>
+                    <td><span class="tier-badge">PRO</span></td>
+                    <td>50 Seats</td>
+                    <td><strong>Rp 12.500.000</strong></td>
+                    <td>28 Aug 2026</td>
+                    <td><span class="chip-status chip-processing">Pending Renewal</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             3. CUSTOMERS & CRM PAGE
+             ========================================================================== -->
+        <section class="page-view hidden" id="crmPage">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">Customer Relationship Directory</h2>
+                <p class="card-desc">Verified customer accounts, lifetime spend (LTV), and account status.</p>
+              </div>
+              <button class="btn btn-primary" id="inviteMemberBtn">+ Invite Customer / Member</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Customer Name</th>
+                    <th>Email Address</th>
+                    <th>Company / Domain</th>
+                    <th>Total LTV</th>
+                    <th>Orders</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="crmTable">
+                  <tr>
+                    <td><div class="customer-cell"><div class="c-avatar av-blue">BS</div><strong>Budi Santoso</strong></div></td>
+                    <td>budi.santoso@enterprise.co.id</td>
+                    <td>PT Sentosa Abadi</td>
+                    <td class="amount-cell">Rp 48.500.000</td>
+                    <td>18 Orders</td>
+                    <td><span class="chip-status chip-completed">Verified VIP</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Opening customer profile: Budi Santoso', '👤')">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td><div class="customer-cell"><div class="c-avatar av-emerald">AP</div><strong>Andi Pratama</strong></div></td>
+                    <td>andi.p@fintechcorp.id</td>
+                    <td>Fintech Corp</td>
+                    <td class="amount-cell">Rp 32.800.000</td>
+                    <td>12 Orders</td>
+                    <td><span class="chip-status chip-completed">Verified VIP</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Opening customer profile: Andi Pratama', '👤')">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td><div class="customer-cell"><div class="c-avatar av-purple">SR</div><strong>Siti Rahma</strong></div></td>
+                    <td>siti.rahma@cloudstudio.com</td>
+                    <td>Cloud Studio ID</td>
+                    <td class="amount-cell">Rp 21.400.000</td>
+                    <td>9 Orders</td>
+                    <td><span class="chip-status chip-completed">Active</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Opening customer profile: Siti Rahma', '👤')">Manage</button></td>
+                  </tr>
+                  <tr>
+                    <td><div class="customer-cell"><div class="c-avatar av-amber">DW</div><strong>Dewi Wulandari</strong></div></td>
+                    <td>dewi.wulan@globaltrade.id</td>
+                    <td>Global Trade ID</td>
+                    <td class="amount-cell">Rp 9.500.000</td>
+                    <td>4 Orders</td>
+                    <td><span class="chip-status chip-processing">Standard</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Opening customer profile: Dewi Wulandari', '👤')">Manage</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             4. PRODUCT CATALOG & INVENTORY PAGE
+             ========================================================================== -->
+        <section class="page-view hidden" id="productsPage">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">Inventory Catalog Matrix</h2>
+                <p class="card-desc">SKU stock tracking across Central Jakarta & Surabaya fulfillment warehouses.</p>
+              </div>
+              <button class="btn btn-primary" id="addProductBtn">+ Add New SKU Item</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>SKU ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Unit Price</th>
+                    <th>Stock Units</th>
+                    <th>Status</th>
+                    <th class="text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="productCatalogTable">
+                  <tr>
+                    <td><span class="ref-code">SKU-8921</span></td>
+                    <td><strong>PulseFlow Headset Pro</strong></td>
+                    <td>Audio & Electronics</td>
+                    <td>Rp 2.450.000</td>
+                    <td>18 Units</td>
+                    <td><span class="chip-status chip-completed">In Stock</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Editing SKU-8921 details', '📦')">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="ref-code">SKU-7742</span></td>
+                    <td><strong>Quantum Watch Ultra</strong></td>
+                    <td>Wearables</td>
+                    <td>Rp 3.750.000</td>
+                    <td>5 Units</td>
+                    <td><span class="chip-status chip-processing">Low Stock Alert</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Triggering restock order for SKU-7742', '📦')">Restock</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="ref-code">SKU-6120</span></td>
+                    <td><strong>CyberKey Mech Matrix</strong></td>
+                    <td>Peripherals</td>
+                    <td>Rp 1.850.000</td>
+                    <td>42 Units</td>
+                    <td><span class="chip-status chip-completed">In Stock</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Editing SKU-6120 details', '📦')">Edit</button></td>
+                  </tr>
+                  <tr>
+                    <td><span class="ref-code">SKU-5409</span></td>
+                    <td><strong>AeroGlide Master Mouse</strong></td>
+                    <td>Computer Hardware</td>
+                    <td>Rp 1.150.000</td>
+                    <td>24 Units</td>
+                    <td><span class="chip-status chip-completed">In Stock</span></td>
+                    <td class="text-right"><button class="btn btn-secondary btn-sm" onclick="toast('Editing SKU-5409 details', '📦')">Edit</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             5. LIVE ORDERS PAGE
+             ========================================================================== -->
+        <section class="page-view hidden" id="ordersPage">
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">Order Lifecycle Management</h2>
+                <p class="card-desc">Batch order dispatching, shipping waybill generation, and payment settlement.</p>
+              </div>
+              <div class="flex-actions">
+                <button class="btn btn-secondary" id="exportOrdersTabBtn">Export All Orders</button>
+                <button class="btn btn-primary" id="createOrderBtn">+ Create Manual Order</button>
+              </div>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Order Reference</th>
+                    <th>Customer Identity</th>
+                    <th>Timestamp</th>
+                    <th>Amount (IDR)</th>
+                    <th>Gateway Status</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="ordersFullTable">
+                  <!-- Synced with order rows -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             6. FINANCIAL AUDIT & REPORTS PAGE
+             ========================================================================== -->
+        <section class="page-view hidden" id="reportsPage">
+          <div class="card mb-4">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">Financial Report Generation Engine</h2>
+                <p class="card-desc">Export GAAP / PSAK compliant financial performance data and tax ledger reconciliation.</p>
+              </div>
+            </div>
+            <div class="report-form-grid">
+              <div class="form-group">
+                <label class="form-label">Report Period</label>
+                <select class="select-field" id="reportPeriodSelect">
+                  <option>Current Fiscal Year (2026)</option>
+                  <option>Q2 2026 (Apr - Jun)</option>
+                  <option>Q3 2026 (Jul - Sep)</option>
+                  <option>Last 30 Days (Rolling)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Report Format</label>
+                <select class="select-field" id="reportFormatSelect">
+                  <option value="pdf">PDF Statement (Executive Briefing)</option>
+                  <option value="csv">CSV Spreadsheet (Accounting Raw Data)</option>
+                  <option value="xlsx">Excel Workbook (.XLSX)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Statement Type</label>
+                <select class="select-field" id="reportTypeSelect">
+                  <option>Profit & Loss (P&L) Statement</option>
+                  <option>Tax & VAT Audit Reconciliation</option>
+                  <option>Cash Flow & Gateway Settlements</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-4">
+              <button class="btn btn-primary" id="generateReportBtn">Generate & Download Report</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================================================
+             7. SYSTEM SETTINGS & API PAGE
+             ========================================================================== -->
+        <section class="page-view hidden" id="settingsPage">
+          <div class="card mb-4">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">API Gateways & Production Keys</h2>
+                <p class="card-desc">Manage API credentials for webhooks, mobile apps, and third-party integrations.</p>
+              </div>
+              <button class="btn btn-secondary" id="rotateKeyBtn">Rotate API Key</button>
+            </div>
+            <div class="api-key-box">
+              <span class="api-key-label">Live Production API Key</span>
+              <div class="api-key-field">
+                <input type="password" id="apiKeyInput" value="pulseops_live_9f823bc89124ad90123fe891234ba" readonly>
+                <button class="btn btn-secondary btn-sm" id="toggleApiKeyBtn">Reveal</button>
+                <button class="btn btn-primary btn-sm" id="copyApiKeyBtn">Copy Key</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <div>
+                <h2 class="card-title">System Preferences & Security</h2>
+                <p class="card-desc">Configure dashboard behaviors, timezones, and two-factor authentication.</p>
+              </div>
+              <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+            </div>
+            <div class="settings-form">
+              <div class="setting-row">
+                <div>
+                  <strong>Default Currency</strong>
+                  <p class="text-dim">Currency used for financial reporting and transaction ledgers.</p>
+                </div>
+                <select class="select-field" style="width: 200px;">
+                  <option>IDR (Indonesian Rupiah)</option>
+                  <option>USD (US Dollar)</option>
+                  <option>SGD (Singapore Dollar)</option>
+                </select>
+              </div>
+
+              <div class="setting-row">
+                <div>
+                  <strong>Two-Factor Authentication (2FA)</strong>
+                  <p class="text-dim">Require TOTP authenticator code upon executive login.</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="twoFaToggle" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="setting-row">
+                <div>
+                  <strong>Real-time Telemetry Notifications</strong>
+                  <p class="text-dim">Receive instant popups for high-value orders (> Rp 1.000.000).</p>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="telemetryToggle" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODALS & DIALOGS
+       ========================================================================== -->
+  
+  <!-- 1. New Transaction Modal -->
+  <div class="modal-overlay" id="txModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Create New Transaction</div>
+        <button class="modal-close-btn" id="closeTxModal">&times;</button>
+      </div>
+      <form id="txForm" class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Customer Name</label>
+          <input type="text" id="txCustomerName" class="input-field" placeholder="e.g. Hendra Wijaya" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Customer Email</label>
+          <input type="email" id="txCustomerEmail" class="input-field" placeholder="e.g. hendra@corp.id" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Transaction Amount (IDR)</label>
+          <input type="number" id="txAmount" class="input-field" placeholder="e.g. 1500000" min="10000" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Gateway Status</label>
+          <select id="txStatus" class="select-field">
+            <option value="Settled">Settled (Paid)</option>
+            <option value="Processing">Processing</option>
+            <option value="Refunded">Refunded</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelTxBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Transaction</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Add Product Modal -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Add SKU Item to Catalog</div>
+        <button class="modal-close-btn" id="closeProductModal">&times;</button>
+      </div>
+      <form id="productForm" class="modal-body">
+        <div class="form-group">
+          <label class="form-label">Product Name</label>
+          <input type="text" id="prodName" class="input-field" placeholder="e.g. Studio Pro Earbuds" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="prodCategory" class="select-field">
+            <option>Audio & Electronics</option>
+            <option>Wearables</option>
+            <option>Peripherals</option>
+            <option>Computer Hardware</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Price (IDR)</label>
+          <input type="number" id="prodPrice" class="input-field" placeholder="e.g. 850000" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Stock Units</label>
+          <input type="number" id="prodStock" class="input-field" placeholder="e.g. 50" min="1" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancelProductBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save SKU</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Enterprise Upgrade Modal -->
+  <div class="modal-overlay" id="upgradeModal">
+    <div class="modal-card upgrade-modal-card">
+      <div class="modal-head">
+        <div class="modal-title">Upgrade Cloud Infrastructure</div>
+        <button class="modal-close-btn" id="closeUpgradeModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-dim mb-4">Choose a high-capacity tier tailored for multi-region operations and enterprise SLAs.</p>
+        <div class="plan-grid">
+          <div class="plan-card">
+            <div class="plan-badge">STARTER</div>
+            <h3>Pro Tier</h3>
+            <div class="plan-price">Rp 4.9M <span>/ mo</span></div>
+            <ul class="plan-features">
+              <li>✓ 50 GB Cloud Storage</li>
+              <li>✓ 10 Team Members</li>
+              <li>✓ Standard Webhooks</li>
+            </ul>
+            <button class="btn btn-secondary w-full select-plan-btn" data-plan="Pro">Current Plan</button>
+          </div>
+
+          <div class="plan-card featured">
+            <div class="plan-badge highlight">RECOMMENDED</div>
+            <h3>Enterprise Scale</h3>
+            <div class="plan-price">Rp 14.5M <span>/ mo</span></div>
+            <ul class="plan-features">
+              <li>✓ Unlimited Cloud Storage</li>
+              <li>✓ 100+ Team Members</li>
+              <li>✓ 99.99% Uptime SLA</li>
+              <li>✓ Dedicated Account Manager</li>
+            </ul>
+            <button class="btn btn-primary w-full select-plan-btn" data-plan="Enterprise">Upgrade to Enterprise</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context Menu for Row Actions -->
+  <div class="context-menu" id="rowContextMenu">
+    <div class="context-item" data-action="view"><span class="icon">👁️</span> View Order Details</div>
+    <div class="context-item" data-action="settle"><span class="icon">✓</span> Mark as Settled</div>
+    <div class="context-item" data-action="receipt"><span class="icon">📄</span> Download Tax Invoice</div>
+    <div class="context-item" data-action="refund"><span class="icon">🔄</span> Issue Full Refund</div>
+    <div class="dropdown-divider"></div>
+    <div class="context-item danger" data-action="delete"><span class="icon">🗑️</span> Delete Ledger Entry</div>
+  </div>
+
+  <!-- Toast Notification Feedback Container -->
+  <div class="toast-wrapper">
+    <div class="toast-card" id="toast"></div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+import fs from 'fs';
+import path from 'path';
+
+const DB_DIR = path.join(process.cwd(), 'data');
+const DB_FILE = path.join(DB_DIR, 'db.json');
+
+const INITIAL_DATA = {
+  transactions: [
+    {
+      id: "tx-1",
+      ref: "#ORD-82914",
+      customerName: "Budi Santoso",
+      customerEmail: "budi.santoso@enterprise.co.id",
+      timestamp: "Hari ini, 14:32 WIB",
+      amount: 2450000,
+      status: "Lunas",
+      avatarClass: "av-blue",
+      initials: "BS"
+    },
+    {
+      id: "tx-2",
+      ref: "#ORD-82913",
+      customerName: "Andi Pratama",
+      customerEmail: "andi.p@fintechcorp.id",
+      timestamp: "Hari ini, 11:15 WIB",
+      amount: 1875000,
+      status: "Diproses",
+      avatarClass: "av-emerald",
+      initials: "AP"
+    },
+    {
+      id: "tx-3",
+      ref: "#ORD-82912",
+      customerName: "Siti Rahma",
+      customerEmail: "siti.rahma@cloudstudio.com",
+      timestamp: "Kemarin, 19:40 WIB",
+      amount: 3120000,
+      status: "Lunas",
+      avatarClass: "av-purple",
+      initials: "SR"
+    },
+    {
+      id: "tx-4",
+      ref: "#ORD-82911",
+      customerName: "Dewi Wulandari",
+      customerEmail: "dewi.wulan@globaltrade.id",
+      timestamp: "Kemarin, 16:05 WIB",
+      amount: 950000,
+      status: "Dikembalikan",
+      avatarClass: "av-amber",
+      initials: "DW"
+    }
+  ],
+  products: [
+    {
+      id: "prod-1",
+      sku: "SKU-8921",
+      name: "PulseFlow Headset Pro",
+      category: "Audio & Elektronik",
+      price: 2450000,
+      stock: 18,
+      soldUnits: 142,
+      totalRevenue: "Rp 48,2 M",
+      status: "Stok Aman",
+      thumbClass: "thumb-indigo"
+    },
+    {
+      id: "prod-2",
+      sku: "SKU-7742",
+      name: "Quantum Watch Ultra",
+      category: "Perangkat Wearable",
+      price: 3750000,
+      stock: 5,
+      soldUnits: 98,
+      totalRevenue: "Rp 36,8 M",
+      status: "Peringatan Stok Menipis",
+      thumbClass: "thumb-emerald"
+    },
+    {
+      id: "prod-3",
+      sku: "SKU-6120",
+      name: "CyberKey Mech Matrix",
+      category: "Periferal & Aksesori",
+      price: 1850000,
+      stock: 42,
+      soldUnits: 76,
+      totalRevenue: "Rp 29,4 M",
+      status: "Stok Aman",
+      thumbClass: "thumb-amber"
+    },
+    {
+      id: "prod-4",
+      sku: "SKU-5409",
+      name: "AeroGlide Master Mouse",
+      category: "Perangkat Keras Komputer",
+      price: 1150000,
+      stock: 24,
+      soldUnits: 65,
+      totalRevenue: "Rp 21,7 M",
+      status: "Stok Aman",
+      thumbClass: "thumb-violet"
+    }
+  ],
+  customers: [
+    {
+      id: "cust-1",
+      name: "Budi Santoso",
+      email: "budi.santoso@enterprise.co.id",
+      company: "PT Sentosa Abadi",
+      ltv: "Rp 48.500.000",
+      ordersCount: 18,
+      status: "Terverifikasi VIP",
+      avatarClass: "av-blue",
+      initials: "BS"
+    },
+    {
+      id: "cust-2",
+      name: "Andi Pratama",
+      email: "andi.p@fintechcorp.id",
+      company: "Fintech Corp",
+      ltv: "Rp 32.800.000",
+      ordersCount: 12,
+      status: "Terverifikasi VIP",
+      avatarClass: "av-emerald",
+      initials: "AP"
+    },
+    {
+      id: "cust-3",
+      name: "Siti Rahma",
+      email: "siti.rahma@cloudstudio.com",
+      company: "Cloud Studio ID",
+      ltv: "Rp 21.400.000",
+      ordersCount: 9,
+      status: "Aktif",
+      avatarClass: "av-purple",
+      initials: "SR"
+    },
+    {
+      id: "cust-4",
+      name: "Dewi Wulandari",
+      email: "dewi.wulan@globaltrade.id",
+      company: "Global Trade ID",
+      ltv: "Rp 9.500.000",
+      ordersCount: 4,
+      status: "Standar",
+      avatarClass: "av-amber",
+      initials: "DW"
+    }
+  ],
+  settings: {
+    currency: "IDR (Rupiah Indonesia)",
+    twoFactorAuth: true,
+    telemetryNotifications: true,
+    apiKey: "pulseops_live_9f823bc89124ad90123fe891234ba",
+    currentPlan: "Skala Enterprise"
+  },
+  notifications: [
+    {
+      id: "notif-1",
+      title: "Rp 2.450.000 diterima dari Budi Santoso",
+      time: "2 menit lalu",
+      type: "payment",
+      unread: true
+    },
+    {
+      id: "notif-2",
+      title: "Stok Quantum Watch Ultra menipis (sisa 5 unit)",
+      time: "15 menit lalu",
+      type: "inventory",
+      unread: true
+    },
+    {
+      id: "notif-3",
+      title: "Akun enterprise baru terdaftar: Global Trade ID",
+      time: "1 jam lalu",
+      type: "crm",
+      unread: false
+    }
+  ]
+};
+
+export function getDb() {
+  try {
+    if (!fs.existsSync(DB_DIR)) {
+      fs.mkdirSync(DB_DIR, { recursive: true });
+    }
+    if (!fs.existsSync(DB_FILE)) {
+      fs.writeFileSync(DB_FILE, JSON.stringify(INITIAL_DATA, null, 2), 'utf-8');
+      return INITIAL_DATA;
+    }
+    const raw = fs.readFileSync(DB_FILE, 'utf-8');
+    return JSON.parse(raw);
+  } catch (error) {
+    console.error('Database read error:', error);
+    return INITIAL_DATA;
+  }
+}
+
+export function saveDb(data) {
+  try {
+    if (!fs.existsSync(DB_DIR)) {
+      fs.mkdirSync(DB_DIR, { recursive: true });
+    }
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+    return true;
+  } catch (error) {
+    console.error('Database write error:', error);
+    return false;
+  }
+}
